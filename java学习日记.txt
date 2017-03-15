@@ -1,0 +1,35 @@
+1.Java包装类拆箱及装箱：
+	装箱：把基本类型用它们相对应的引用类型包起来，使他们可以具有对象的特质。
+	拆箱：跟装箱相反。
+例子：
+int i = 10;
+Integer j = i;
+int k = j;
+
+
+
+
+2.Object类浅析：
+	hashCode():
+	toString():
+	equals():
+
+
+3.String,StringBuffer和StringBulder
+
+	String：不可改变的Unicode字符序列
+	例子：String s3 = new String("abc");
+	
+	StringBuffer:可改变的Unicode字符序列
+	例子：StringBuffer sb = new StringBuffer("A");
+		sb.append("B");
+	
+	StringBulder跟StringBuffer操作一样，只是不支持并发操作。
+
+4.内部类：
+	
+	内部类是指在一个外部类的内部在定义一个类。
+	内部类可为静态，可用protected和private修饰
+	成员内部类，局部内部类，静态内部类，匿名内部类。
+
+	
