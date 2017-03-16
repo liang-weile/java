@@ -45,3 +45,140 @@ int k = j;
 	public Thread(ThreadGroup group,Runnable target,String name,long stacksize);
        	
 	一个普通java类从Thread类继承，就可以成为一个线程类，通过star方法执行。
+	Thread类 重载构造方法设置线程名
+	例子： current(当前)
+	package mythread:
+	public class Thread2 entends Thread
+	{
+		private String who;
+		public void run()
+		{
+			System.out.println(who + ":" + this.getName());
+		}
+		public Thread2(String who)
+		{
+			super();
+			this.who = who;
+		}
+		public Thread2 (String who,String name)
+		{
+			super(name);
+			this.who = who;
+		}
+		public static void main(String[] args)
+		{
+			Thread2 thread1 = new Thread2("thread1","MyThread1");
+			Thread2 thread2 = new Thread2("thread2");
+			Thread2 thread3 = new Thread2("thread3");
+			thread2.setName("MyThread2");
+			thread1.start();
+			thread2.start();
+			thread3.start();
+		}
+	}
+	
+	
+6：线程的生命周期：与人有生老病死一样，线程也同样要经历开始（等待）、运行、挂起和停止四种不同的状态。这四种状态都可以通过Thread类中的方法进行控制。
+	// 开始线程  
+
+	public void start( );  
+
+	public void run( );  
+
+	// 挂起和唤醒线程  
+
+	public void resume( );     // 不建议使用  
+
+	public void suspend( );    // 不建议使用  
+
+	public static void sleep(long millis);  
+
+	public static void sleep(long millis, int nanos);   
+
+	// 终止线程  
+
+	public void stop( );       // 不建议使用  
+
+	public void interrupt( );  
+
+	// 得到线程状态  
+
+	public boolean isAlive( );  
+
+	public boolean isInterrupted( );  
+
+	public static boolean interrupted( );  
+
+	// join方法  
+
+	public void join( ) throws InterruptedException;
+	
+	
+	详细的join方法：Thread类的join方法
+	package mythread;  
+
+public class JoinThread extends Thread  
+
+{  
+
+    public static int n = 0;  
+
+    static synchronized void inc()  
+
+    {  
+
+        n++;  
+
+    }  
+
+    public void run()  
+
+    {  
+
+       for (int i = 0; i < 10; i++)  
+
+            try
+
+            {  
+
+                inc();  
+
+                sleep(3);  // 为了使运行结果更随机，延迟3毫秒  
+
+
+
+            }  
+
+            catch (Exception e)  
+
+            {  
+
+            }
+
+    }  
+
+    public static void main(String[] args) throws Exception  
+
+    {  
+
+        Thread threads[] = new Thread[100];  
+
+        for (int i = 0; i < threads.length; i++)  // 建立100个线程  
+
+            threads[i] = new JoinThread();  
+
+        for (int i = 0; i < threads.length; i++)   // 运行刚才建立的100个线程  
+
+            threads[i].start();  
+
+        if (args.length > 0)
+
+            for (int i = 0; i < threads.length; i++)   // 100个线程都执行完后继续  
+
+                threads[i].join();  
+
+        System.out.println(“n=” + JoinThread.n);  
+
+    }  
+
+}
