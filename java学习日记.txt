@@ -32,4 +32,16 @@ int k = j;
 	内部类可为静态，可用protected和private修饰
 	成员内部类，局部内部类，静态内部类，匿名内部类。
 
-	
+
+
+5.线程:创建线程两种方法：Thread类和使用Runnable接口。使用Runnable接口时需要建立一个Thread实例。
+	public Thread();
+	public Thread(Runnable target);
+	public Thread(String name);
+	public Thread(Runnable target,String name);
+	public Thread(ThreadGroup group,Runnable target);
+	public Thread(ThreadGroup group,String name);
+	public Thread(ThreadGroup group,Runnable target,String name);
+	public Thread(ThreadGroup group,Runnable target,String name,long stacksize);
+       	
+	一个普通java类从Thread类继承，就可以成为一个线程类，通过star方法执行。
